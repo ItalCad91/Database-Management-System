@@ -1,9 +1,14 @@
-export function helloWorld(req, res, next) {
-    res.setHeader('Content-Type', 'text/html');
-    res.end('<h1>Hello World</h1>');
-};
+export function displayHomePage(req,res,next)
+{
+ res.render('index', {title : 'Home', page:'home'}); 
+} 
 
-export function goodbyeWorld(req, res, next) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('GoodBye World');
-};
+export function displayServicesPage(req,res,next)
+{
+ res.render('index', {title : 'Home', page:'services'}); 
+} 
+
+export function displayAboutPage(req,res,next)
+{
+ res.render('index', {title : 'Home', page:'about'}); 
+} 
