@@ -1,39 +1,88 @@
-// Author:Riccardo Reali
-// Date: 15-02-2023
+     // Import the 'debug' module and log a debug message with the name 'comp-229'
 
-import express from "express"; // is importing the Express module from the NPM package named "express". 
+     import debug from 'debug';
+     debug('Portfolio');
 
-import router from "./app/Routes/index.routes.server.js" 
+     // Import the 'http' module
 
-//THIRD PARTY MODULES:
-import logger from "morgan";
-import session from "express-session";
-import bodyParser from "body-parser";
-import cookieParser from"cookie-parser";
+     import http from 'http';
 
-//ES MODULES FIX FOR __DIRNAME
-import path, {dirname} from "path";
-import { fileURLToPath } from "url";
-const __dirname = dirname(fileURLToPath(import.meta.url));
+     // Import the app module located in './app/app.js'
 
+     import app from './app/app.js';
 
+     // Define a constant variable named 'PORT', which is either set to the value of the environment variable 'PORT' or to the value 3000 if the environment variable is not set
 
+     const PORT = normalizePort(process.env.PORT || 3000);
 
+     // Configure the app object to use the port specified in the 'PORT' variable
 
-const app = express(); //Creates an instance of the Express application. This instance will be used to configure the behavior of the web server. 
+     app.set('port', PORT);
 
+     // Create an HTTP server using the 'http.createServer()' method and passing in the app object as an argument
 
-//SETTING UP MIDDLEWARES
-app.set('view engine', "ejs"); // SETTING UP THE APPLICATION TO USE EJS FILES
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({extended : false}));
-app.set('views', path.join(__dirname, '/app/Views'));
-app.use(express.static(path.join(__dirname,'/public'))); //Here we are saying that everything under public folder are static files, which means they are on the client side.
-app.use(session({ secret: 'Mysecret', saveUninitialized: false, resave: false}));
+     const server = http.createServer(app);
 
+     // Set the server to listen on the specified port using the 'server.listen()' method
 
-// Mount the router on the app instance
-app.use('/', router); 
+     server.listen(PORT);
 
-app.listen(3000); 
+     // Handle the server's 'error' event using the 'onError()' function
+
+     server.on('error', onError);
+
+     // Handle the server's 'listening' event using the 'onListening()' function
+
+     server.on('listening', onListening);
+
+     // Define the 'normalizePort()' function, which takes in a value and returns either that value (if it's not a number) or the parsed integer value of that string
+
+     function normalizePort(val) 
+     {
+         var port = parseInt(val, 10);
+         if (isNaN(port)) 
+         {
+             return val;
+         }
+         if (port >= 0) 
+         {
+             return port;
+         }
+         return false;
+     }
+
+     // Define the 'onError()' function, which takes in an error object and handles specific types of errors with specific messages and actions
+
+     function onError(error) 
+     {
+         if (error.syscall !== 'listen') 
+         {
+             throw error;
+         }
+         let bind = typeof port === 'string'
+             ? 'Pipe ' + port
+             : 'Port ' + port;
+         // handle specific listen errors with friendly messages
+     switch (error.code) 
+     {
+         case 'EACCES':
+             console.error(bind + ' requires elevated privileges');
+             process.exit(1);
+             break;
+         case 'EADDRINUSE':
+             console.error(bind + ' is already in use');
+             process.exit(1);
+             break;
+         default:
+             throw error;
+     }
+ }
+
+     // Define the 'onListening()' function, which logs a debug message indicating that the server is listening on the specified port
+
+ function onListening() 
+ {
+   let addr = server.address();
+   let bind = 'pipe ' + addr;
+   debug('Listening on ' + bind);
+ }

@@ -8,10 +8,15 @@ export function displayHomePage(req,res,next)
 
 export function displayServicesPage(req,res,next)
 {
- res.render('index', {title : 'Home', page:'services'}); 
+ res.render('index', {title : 'Services', page:'services'}); 
 } 
 
 export function displayAboutPage(req,res,next)
 {
- res.render('index', {title : 'Home', page:'about'}); 
+ res.render('index', {title : 'About', page:'about'}); 
+} 
+
+export function displayContactPage(req,res,next)
+{
+ res.render('index', {title : 'Contact Us', page:'contactus'}); 
 } 
