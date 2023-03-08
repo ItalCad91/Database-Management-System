@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
     productName: String, 
-    productID: Number, 
+    productID: String, 
     quantityAvailable: Number,
-    price: Number,
+    price: String,
     quantitySold: Number
 },{
     timestamps:true,

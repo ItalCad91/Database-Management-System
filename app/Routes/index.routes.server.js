@@ -9,7 +9,7 @@ import {displayHomePage, displayAboutPage, displayServicesPage, displayContactPa
 const router = Router(); // I am initializing the router function.
 
 // app.use('/')
-router.get('/', displayHomePage);
+router.get('/home', displayHomePage);
 router.get('/about', displayAboutPage);
 router.get('/services', displayServicesPage);
 router.get('/contactus', displayContactPage);

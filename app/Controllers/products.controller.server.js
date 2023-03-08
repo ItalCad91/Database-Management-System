@@ -1,5 +1,7 @@
 import productModel from '../Models/products.js';
 
+import { UserDisplayName } from '../Utils/index.js'
+
 export function DisplayProductList(req, res, next){
   productModel.find(function(err, productCollection) {
         if(err){
@@ -7,12 +9,12 @@ export function DisplayProductList(req, res, next){
             res.end(err);
         }
 
-        res.render('index', {title: 'Contact List', page: 'products/list', products: productCollection});
+        res.render('index', {title: 'Contact List', page: 'products/list', products: productCollection, displayName: UserDisplayName(req)});
     })
 }
 
 export function DisplayProductAddPage(req, res, next){
-    res.render('index', { title: 'Add Contact', page: 'products/edit', product: {} });
+    res.render('index', { title: 'Add a Product', page: 'products/edit', product: {}, displayName: UserDisplayName(req) });
 }
 
 export function ProcessProductAddPage(req, res, next){
@@ -46,7 +48,7 @@ export function DisplayProductEditPage(req, res, next){
             res.end(err);
         }
 
-        res.render('index', { title: 'Edit Contact', page: 'products/edit', product: product });
+        res.render('index', { title: 'Edit Contact', page: 'products/edit', product: product, displayName: UserDisplayName(req) });
     });    
 }
 
