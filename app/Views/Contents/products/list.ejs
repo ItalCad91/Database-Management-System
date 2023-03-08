@@ -10,6 +10,10 @@
 <body >
 <div class="container fontHome">
     <h1 class="center">Product List</h1>
+    <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
+        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search for a product" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
     <hr style="color: black;">
   <table class="table table-striped table-bordered table-hover">
                 <thead class="table-dark">
@@ -52,7 +56,7 @@
             </table>
             <br>
             <a href="/products-add" style="background-color: 00A491; color: aliceblue;" class="btn" role="button">
-                Add a Contact</a>
+                Add an Item</a>
            <div class="row">
                <div class="col">
                    <br>

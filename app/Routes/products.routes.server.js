@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { DisplayProductList, DisplayProductAddPage, ProcessProductAddPage, DisplayProductEditPage, ProcessProductEditPage, ProcessProductDelete } from "../Controllers/products.controller.server.js";
 
+
 const router = Router();
 
 router.get('/products-list', DisplayProductList);

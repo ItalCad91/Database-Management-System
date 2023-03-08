@@ -9,9 +9,14 @@ Date: 15-02-2023 -->
         <meta name="generator" content="Hugo 0.104.2">
         <title>Pricing example · Bootstrap v5.2</title>    
         <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/pricing/">
-        <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./styleSheet/app.css">       
-        <link href="pricing.css" rel="stylesheet">
+        <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">               
+        <link href="pricing.css" rel="stylesheet">        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/public/styleSheet/app.css">
+        <link rel="script" href="/public/Scripts/scripts.js"> 
     </head>
 
     <!-- CHATBOT -->
@@ -31,17 +36,11 @@ Date: 15-02-2023 -->
 
 
     <body>    
-    <div class="">
-      <header>
-        <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-            <img class="imgPadding" src="../images/logodb.png" alt="logo" class="w3-image" width="50px" height="50px"><span class="fs-4">Our Services</span>
-          </a>
-    
-          <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-            <a class="me-3 py-2 text-dark text-decoration-none" href="#">Services</a>
-            <a class="me-3 py-2 text-dark text-decoration-none" href="#">Price</a>
-            <a class="me-3 py-2 text-dark text-decoration-none" href="#">Support</a>            
+    <div id="services">
+      <header class="bgimg-2">    
+          <nav class="d-inline-flex text-center mt-2 mt-md-0 ms-md-auto">
+            <a style="font-size:xx-large;" class="me-3 py-2 text-dark text-decoration-none" href="#fig1">Services</a>
+            <a style="font-size:xx-large;" class="me-3 py-2 text-dark text-decoration-none" href="#price">Pricing</a>         
           </nav>
         </div>
       </header>  
@@ -53,9 +52,8 @@ Date: 15-02-2023 -->
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                   <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-        
-                    <div class="card-body">
+                    <img class="w3-image w3-round-large" src="/images/create.png" alt="Buildings" width="100%" height="394" id="fig1">   
+                   <div class="card-body">
                       <p class="card-text">
                         <ul>
                             <li>Create and maintain databases:</li>
@@ -68,8 +66,7 @@ Date: 15-02-2023 -->
                 </div>
                 <div class="col">
                   <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-        
+                    <img class="w3-image w3-round-large" src="/images/report.png" alt="Buildings" width="100%" height="394">        
                     <div class="card-body">
                       <p class="card-text">  
                         <li>Data analysis and reporting:</li>
@@ -81,8 +78,7 @@ Date: 15-02-2023 -->
                 </div>
                 <div class="col">
                   <div class="card shadow-sm">
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-        
+                    <img class="w3-image w3-round-large" src="/images/import.png" alt="Buildings" width="100%" height="394">   
                     <div class="card-body">
                       <p class="card-text">
                         <li>Data import/export:</li>
@@ -100,7 +96,7 @@ Date: 15-02-2023 -->
       <main>
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
             <h1 class="display-4 fw-normal">Pricing</h1>
-            <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+            <p class="fs-5 text-muted" id="price">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
           </div>        
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
           <div class="col">
@@ -155,7 +151,11 @@ Date: 15-02-2023 -->
             </div>
           </div>
         </div>
-    
+    <hr>
+     <!-- Footer -->
+     <footer class="w3-center w3-black w3-padding-64">
+      <a href="#services" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>                
+    </footer>
         
       </main>     
     </div>        
