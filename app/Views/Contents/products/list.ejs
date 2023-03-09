@@ -7,27 +7,35 @@
     <link rel="stylesheet" href="./styleSheet/app.css">
 </head>
 
-<body >
-<div class="container fontHome">
-    <h1 class="center">Product List</h1>
-    <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
-        <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search for a product" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    <hr style="color: black;">
-  <table class="table table-striped table-bordered table-hover">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col" class="text-center">#</th>
-                        <th scope="col">Product Name</th>
-                        <th scope="col">Product ID</th>
-                        <th scope="col">Available Quantity</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity Sold</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
+<body>
+    <div class="container fontHome">
+        <h1 class="center">Product List</h1>
+
+        <!-- SEARCH BAR -->
+        <form method="GET" action="#">        
+            <input type="text" name="query" id="searchInput" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+
+        <h1>Search Results</h1>
+        <div id="searchResults"></div> <!-- div to display search results -->
+
+        <hr style="color: black;">
+
+        <!-- TABLE SECTION -->
+        <table class="table table-striped table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col" class="text-center">#</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product ID</th>
+                    <th scope="col">Available Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity Sold</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
                 <tbody id="contactList">
                     <!-- Repeatable Rows -->
                     <% for(let count = 0; count < products.length; count++) { %>
@@ -64,3 +72,64 @@
     </div>
 </div>
 </body>
+
+
+<script>
+    const searchForm = document.querySelector('form');
+    const searchInput = document.querySelector('input[name="query"]');
+    const searchResults = document.querySelector('#searchResults');
+  
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const query = searchInput.value.trim();
+  
+      fetch(`/search?query=${query}`)
+        .then(response => response.json())
+        .then(products => {
+          if (products.length > 0) {
+            // Clear previous search results
+            searchResults.innerHTML = '';
+  
+            // Create a new table to display search results
+            const table = document.createElement('table');
+            table.classList.add('table', 'table-striped', 'table-bordered', 'table-hover');
+  
+            // Add table header
+            const header = table.createTHead();
+            const row = header.insertRow();
+            const columns = ['Product Name', 'Product ID', 'Available Quantity', 'Price', 'Quantity Sold'];
+            for (let column of columns) {
+              const th = document.createElement('th');
+              th.scope = 'col';
+              th.textContent = column;
+              row.appendChild(th);
+            }
+  
+            // Add table rows for each product
+            const tbody = document.createElement('tbody');
+            for (let product of products) {
+              const row = tbody.insertRow();
+              row.innerHTML = `
+                <td>${product.productName}</td>
+                <td>${product.productID}</td>
+                <td>${product.quantityAvailable}</td>
+                <td>${product.price}</td>
+                <td>${product.quantitySold}</td>
+              `;
+            }
+  
+            // Append table to search results section
+            table.appendChild(tbody);
+            searchResults.appendChild(table);
+          } else {
+            // Display message if no products found
+            searchResults.innerHTML = '<p>No products found</p>';
+          }
+        })
+        .catch(error => {
+          console.error(error);
+          searchResults.innerHTML = '<p>Failed to retrieve search results</p>';
+        });
+    });
+  </script>
+  
