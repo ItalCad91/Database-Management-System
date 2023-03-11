@@ -1,3 +1,7 @@
+// Author:Riccardo Reali
+// Date: 15-02-2023
+
+
 //Encrypts the session
 export const Secret = "MySecret"; 
 

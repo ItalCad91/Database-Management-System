@@ -1,6 +1,11 @@
+// Author:Riccardo Reali
+// Date: 15-02-2023
+
+import express from 'express';
+
 import productModel from '../Models/products.js';
 
-import { UserDisplayName } from '../Utils/index.js'
+import { UserDisplayName } from '../Utils/index.js';
 
 export function DisplayProductList(req, res, next){
   productModel.find(function(err, productCollection) {
@@ -48,7 +53,7 @@ export function DisplayProductEditPage(req, res, next){
             res.end(err);
         }
 
-        res.render('index', { title: 'Edit Contact', page: 'products/edit', product: product, displayName: UserDisplayName(req) });
+        res.render('index', { title: 'Edit Item', page: 'products/edit', product: product, displayName: UserDisplayName(req) });
     });    
 }
 
@@ -91,3 +96,16 @@ export function ProcessProductDelete(req, res, next){
         res.redirect('/products-list');
     })
 }
+
+export async function searchRoute(req, res, next) {
+    try {
+      const query = req.query.query;
+      const products = await productModel.find({
+        productName: { $regex: query, $options: 'i' },
+      });
+      res.send(products);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send('Failed to retrieve search results');
+    }
+  }

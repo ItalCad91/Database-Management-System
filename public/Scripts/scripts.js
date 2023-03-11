@@ -27,37 +27,88 @@
         }
 
 
-        //SEARCH BAR FUNCTION:
+//SEARCH BAR FUNCTION:
 
-        async function handleSubmit(event) {
-          event.preventDefault(); // prevent form from reloading the page
-          const searchTerm = document.querySelector('input[name="q"]').value;
-        
-          const searchResults = await context.functions.execute("searchProducts", searchTerm);
-        
-          // update the table with search results
-          const tableBody = document.getElementById("contactList");
-          tableBody.innerHTML = "";
-          searchResults.forEach((product, index) => {
-            tableBody.innerHTML += `
-              <tr>
-                <th style="color:rgb(135, 72, 16)" scope="row" class="text-center listColor">${index + 1}</th>
-                <td style="color:rgb(135, 72, 16)">${product.productName}</td>
-                <td style="color:rgb(135, 72, 16)">${product.productID}</td>
-                <td style="color:rgb(135, 72, 16)">${product.quantityAvailable}</td>
-                <td style="color:rgb(135, 72, 16)">${product.price}</td>
-                <td style="color:rgb(135, 72, 16)">${product.quantitySold}</td>
-                <td class="text-center col-1">
-                  <a href="/products-edit/${product._id}" style="background-color: 00A491; color: aliceblue;" class="btn btn-sm">
-                    <i class="fas fa-pencil-alt"></i> Edit
-                  </a>
-                </td>
-                <td class="text-center col-1">
-                  <a href="/products-delete/${product._id}" style="background-color: 00A491; color: aliceblue;" class="btn btn-sm">
-                    <i class="fas fa-trash-alt"></i> Delete
-                  </a>
-                </td>
-              </tr>
-            `;
-          });
+const searchForm = document.querySelector('form');
+const searchInput = document.querySelector('input[name="query"]');
+const searchResults = document.querySelector('#searchResults');
+
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const query = searchInput.value.trim();
+
+  fetch(`/search?query=${query}`)
+    .then(response => response.json())
+    .then(products => {
+      if (products.length > 0) {
+        // Clear previous search results
+        searchResults.innerHTML = '';
+
+        // Create a new table to display search results
+        const table = document.createElement('table');
+        table.classList.add('table', 'table-striped', 'table-bordered', 'table-hover');
+
+        // Add table header
+        const header = table.createTHead();
+        const row = header.insertRow();
+        const columns = ['Product Name', 'Product ID', 'Available Quantity', 'Price', 'Quantity Sold'];
+        for (let column of columns) {
+          const th = document.createElement('th');
+          th.scope = 'col';
+          th.textContent = column;
+          row.appendChild(th);
         }
+
+        // Add table rows for each product
+        const tbody = document.createElement('tbody');
+        for (let product of products) {
+          const row = tbody.insertRow();
+          row.innerHTML = `
+            <td>${product.productName}</td>
+            <td>${product.productID}</td>
+            <td>${product.quantityAvailable}</td>
+            <td>${product.price}</td>
+            <td>${product.quantitySold}</td>
+          `;
+        }
+
+        // Append table to search results section
+        table.appendChild(tbody);
+        searchResults.appendChild(table);
+      } else {
+        // Display message if no products found
+        searchResults.innerHTML = '<p>No products found</p>';
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      searchResults.innerHTML = '<p>Failed to retrieve search results</p>';
+    });
+});
+
+//CLEAR BUTTON
+const clearBtn = document.getElementById('clear-btn');
+
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  // Remove the search results table from the DOM
+  const table = document.querySelector('table');
+  if (table) {
+    table.remove();
+  }
+  // Reload the page
+  location.reload();
+});
+
+// PRINT RESULT
+
+const printBtn = document.getElementById('print-btn');
+
+printBtn.addEventListener('click', () => {
+  const searchResultsTable = document.querySelector('table');
+  if (searchResultsTable) {
+    window.print();
+  } else {
+    alert('No search results to print');
+  }
+});

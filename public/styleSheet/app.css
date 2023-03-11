@@ -225,6 +225,21 @@ top: 0px;
 
 /* CONTACT LIST PAGE */
 
+.round
+{
+  font-family: futura-pt, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 15px;
+
+    /* add this */
+    overflow:hidden
+}
+
+
+
 .text-color
 {
   color:aqua;

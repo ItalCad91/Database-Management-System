@@ -1,3 +1,7 @@
+// Author:Riccardo Reali
+// Date: 15-02-2023
+
+
 export function UserDisplayName(req)
 {
 if(req.user)
