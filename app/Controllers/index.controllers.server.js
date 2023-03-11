@@ -27,3 +27,8 @@ export function displayThankYouPage(req,res,next)
 {
  res.render('index', {title : 'Thank You!', page:'ThankYou', displayName: UserDisplayName(req)}); 
 } 
+
+export function displayProfilePage(req,res,next)
+{
+ res.render('index', {title : 'Profile', page:'profile', displayName: UserDisplayName(req)}); 
+} 
