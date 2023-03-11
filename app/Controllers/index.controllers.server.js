@@ -22,3 +22,8 @@ export function displayContactPage(req,res,next)
 {
  res.render('index', {title : 'Contact Us', page:'contactus', displayName: UserDisplayName(req)}); 
 } 
+
+export function displayThankYouPage(req,res,next)
+{
+ res.render('index', {title : 'Thank You!', page:'ThankYou', displayName: UserDisplayName(req)}); 
+} 
