@@ -54,7 +54,7 @@ export function ProcessLoginPage(req, res, next)
       console.error(err);
       res.end(err);
      }
-      return res.redirect('/home');
+      return res.redirect('/');
     })        
     })(req, res, next);
 }
@@ -85,7 +85,7 @@ export function ProcessRegisterPage(req, res, next)
      }
       return passport.authenticate('local')(req, res, function()
       {
-       return res.redirect('/home');
+       return res.redirect('/');
       });
     });
 }
