@@ -11,16 +11,17 @@ Date: 15-02-2023 -->
     <link rel="stylesheet" href="./styleSheet/app.css">         
 </head>
 
-<body class="bgimg-3">
+<body id="top1">
+    <div class="layer1 spacer"></div>
     <div class="container fontHome">
-        <h1 class="center">Product List</h1>
+        <h1 class="center">Personal Database</h1>
 
         <!-- SEARCH BAR -->
         <form method="GET" action="#">        
-            <input type="text" name="query" id="searchInput" placeholder="Search...">
-            <button type="submit">Search</button>
-            <button id="print-btn">Print Search Results</button>            
-            <button id="clear-btn">Clear</button>            
+            <input style="border-radius: 20px;" type="text" name="query" id="searchInput" placeholder="Search...">
+            <button style="border-radius: 20px; background-color: 00A491; color: aliceblue;" type="submit">Search</button>
+            <button style="border-radius: 20px; background-color: 00A491; color: aliceblue;" id="print-btn">Print Search Results</button>            
+            <button style="border-radius: 20px; background-color: 00A491; color: aliceblue;" id="clear-btn">Clear</button>            
         </form>
 
         <h1>Search Results:</h1>
@@ -38,9 +39,9 @@ Date: 15-02-2023 -->
 
           <th scope="col" class="text-center">#</th> 
 
-          <th scope="col">Product Name</th> 
+          <th scope="col">Name</th> 
 
-          <th scope="col">Product ID</th> 
+          <th scope="col">ID</th> 
 
           <th scope="col">Available Quantity</th> 
 
@@ -80,7 +81,7 @@ Date: 15-02-2023 -->
 
               <td class="text-center col-1"> 
 
-                  <a href="/products-edit/<%= products[count]._id %>" style="background-color: 00A491; color: aliceblue;" 
+                  <a href="/products-edit/<%= products[count]._id %>" style=" border-radius: 20px; background-color: 00A491; color: aliceblue;" 
 
                       class="btn btn-sm"> 
 
@@ -92,7 +93,7 @@ Date: 15-02-2023 -->
 
               <td class="text-center col-1"> 
 
-                  <a href="/products-delete/<%= products[count]._id %>" style="background-color: 00A491; color: aliceblue;" 
+                  <a href="/products-delete/<%= products[count]._id %>" style=" border-radius: 20px; background-color: 00A491; color: aliceblue;" 
 
                       class="btn btn-sm"> 
 
@@ -110,7 +111,7 @@ Date: 15-02-2023 -->
 
 <br> 
 
-<a href="/products-add" style="background-color: 00A491; color: aliceblue;" class="btn" role="button"> 
+<a href="/products-add" style="background-color: 00A491; color: aliceblue; border-radius: 20px;" class="btn" role="button"> 
 
   Add an Item</a> 
 
@@ -126,8 +127,31 @@ Date: 15-02-2023 -->
 
 </div> 
 
-</body>
-  
+<section class="text-center">
+    <a href="#top1" class="w3-button text-center w3-black"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  </section>           
+    <div class="layer2 spacer"></div>   
+
+</body> 
 
 <script src="./Scripts/scripts.js"></script> 
 
+
+<style>
+.spacer {
+  aspect-ratio: 680/150;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+        
+.layer1 {
+  background-image: url('./images/aboutLayerTop.svg');
+} 
+        
+.layer2 {
+  background-image: url('./images/aboutLayerbottom.svg');
+}   
+    
+</style>

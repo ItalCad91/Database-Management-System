@@ -11,8 +11,8 @@ Date: 15-02-2023 -->
     <link rel="stylesheet" href="./styleSheet/app.css">     
   </head>
   
-  <body class="fontHome bgimg-3">
-  
+  <body class="fontHome">
+    <div class="layer1 spacer"></div>
     <div class="container fontHome">
       <div class="row">
         <div class="offset-md-3 col-md-6">
@@ -71,16 +71,35 @@ Date: 15-02-2023 -->
               required>
             </div>
   
-            <button style="background-color: 00A491; color: aliceblue;" class="btn" type="submit">
+            <button style="background-color: 00A491; color: aliceblue; border-radius: 20px;" class="btn" type="submit">
               <i class="fas fa-edit"></i> Submit
             </button>
   
-            <a href="/products-list" style="background-color: 00A491; color: aliceblue;" class="btn">
+            <a href="/products-list" style="background-color: 00A491; color: aliceblue; border-radius: 20px;" class="btn">
               <i class="fas fa-undo"></i> Cancel
             </a>
           </form>
         </div>
       </div>
     </div>
+    <div class="layer2 spacer"></div> 
   </body>
   
+<style>
+  .spacer {
+    aspect-ratio: 680/150;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+      
+  .layer1 {
+    background-image: url('./images/aboutLayerTop.svg');
+  } 
+      
+  .layer2 {
+    background-image: url('./images/aboutLayerbottom.svg');
+  }   
+  
+  </style>

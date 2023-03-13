@@ -1,15 +1,38 @@
 <!-- Author:Riccardo Reali
 Date: 15-02-2023 -->
-
-
-
-<head>    
+<head>        
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/public/styleSheet/app.css">
+  <link rel="script" href="/public/Scripts/scripts.js">
 </head>
+  
+  <body id="top1">
+    <div class="layer1 spacer"></div> 
+
+    <div class="card">
+    <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+      <i class="checkmark">✓</i>
+    </div>
+      <h1>Thank you!</h1> 
+      <p>Your message has been sent successfully!<br/> A member of staff will contact you as soon as possible.</p>
+      <a class="nav-link <%= (page == 'home') ? 'active' : ''; %>" href="/"><button>Back to home</button></a>
+    </div>
+
+    <section>
+      <div class="layer2 spacer text-center"><a href="#top1" style="margin-top: 20px;" class="w3-button text-center w3-black"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a></div>
+    </section>    
+  </body>
+
+
   <style>
     body {
       text-align: center;
       padding: 40px 0;
-      background-color:#292929;
+      background-color:#F1F1F1;
     }
       h1 {
         color: #88B04B;
@@ -38,14 +61,20 @@ Date: 15-02-2023 -->
       display: inline-block;
       margin: 0 auto;
     }
+
+    .spacer {
+      aspect-ratio: 680/150;
+      width: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+  }
+  
+  .layer1 {
+  background-image: url('./images/contactTop.svg');
+}    
+    
+  .layer2 {
+      background-image: url('./images/contactBottom.svg');
+  }
   </style>
-  <body>
-    <div class="card">
-    <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
-      <i class="checkmark">✓</i>
-    </div>
-      <h1>Thank you!</h1> 
-      <p>Your message has been sent successfully!<br/> A member of staff will contact you as soon as possible.</p>
-      <a class="nav-link <%= (page == 'home') ? 'active' : ''; %>" href="/"><button>Back to home</button></a>
-    </div>
-  </body>

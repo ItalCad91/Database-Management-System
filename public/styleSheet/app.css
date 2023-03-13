@@ -72,7 +72,6 @@ Date: 15-02-2023 */
 
 
   /* GLOBAL */
-
 .center
 {
   text-align: center;
@@ -271,4 +270,13 @@ top: 0px;
 .listColor
 {
   color: chocolate;
+}
+
+
+/* PROFILE PAGE */
+
+.profileText
+{
+  display: block;
+  text-align: center;
 }

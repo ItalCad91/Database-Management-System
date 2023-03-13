@@ -1,35 +1,35 @@
-<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
-     <div class="card p-4"> 
-        <div class=" image d-flex flex-column justify-content-center align-items-center"> 
-            <button class="btn btn-secondary"> <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> 
-            <span class="name mt-3">Eleanor Pena</span> 
-            <span class="idd">@eleanorpena</span> 
-            <div class="d-flex flex-row justify-content-center align-items-center gap-2"> 
-                <span class="idd1">Oxc4c16a645_b21a</span> 
-                <span><i class="fa fa-copy"></i></span> 
-            </div>             
-            <div class=" d-flex mt-2">
-                 <button class="btn1 btn-dark">Edit Profile</button> 
-                </div> 
-                <div class="text mt-3"> 
-                    <span>This is your account page.
-                        <br><br> 
-                         
-                    </span> 
-                </div> 
-                <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> 
-                    <span><i class="fa fa-twitter"></i></span> 
-                    <span><i class="fa fa-facebook-f"></i></span> 
-                    <span><i class="fa fa-instagram"></i></span> 
-                    <span><i class="fa fa-linkedin"></i></span> 
-                </div> 
-                <div class=" px-2 rounded mt-4 date "> 
-                    <span class="join">Joined May,2021</span> 
-                </div> 
-            </div> 
-        </div>
-</div>
 
+
+<body>
+  <div class="layer1 spacer"></div>  
+  <h1 class="text-center">PROFILE</h1>
+<div class="container mt-4 mb-4 p-3 d-flex justify-content-center">
+  <div id="profile-card" class="card p-4"> 
+    <div class=" image d-flex flex-column justify-content-center align-items-center ">
+      <button id="imageButton" class="btn btn-secondary">
+        <img src="./images/male.png" height="100" width="100" />
+      </button>
+      <br>
+      <p1 style="font-size:xx-large; padding: 8px; color: black;" class="text-center display-4 fw-normal text-decoration-none">Name:</p1>
+      <span style="color:dodgerblue" class="idd editable" id="name"></span>
+      <p1 style="font-size:xx-large; padding: 8px; color: black;" class="text-center display-4 fw-normal text-decoration-none">Username:</p1>
+      <span>@<span style="color: dodgerblue" class="idd editable" id="idd"></span></span>
+      <p1 style="font-size:xx-large; padding: 8px; color: black;" class="text-center display-4 fw-normal text-decoration-none">Role:</p1>
+      <span style="color:dodgerblue" class="idd editable" id="idd1"> </span>                            
+    <div class=" d-flex mt-2">
+    <br>
+    <button class="btn1 btn-dark">Edit Profile</button> 
+  </div> 
+  <div class="text profileText mt-3"> 
+    <span>This is your account page. Click on Edit to change the highlighted data and your avatar.
+      <br><br> 
+    </span> 
+  </div>   
+</div> 
+</div>
+</div>
+<div class="layer2 spacer"></div>
+</body>
 
 <style>
     * {
@@ -37,9 +37,6 @@
     padding: 0
 }
 
-body {
-    background-color: #000
-}
 
 .card {
     width: 350px;
@@ -120,4 +117,99 @@ hr .new1 {
 .date {
     background-color: #ccc
 }
+
+.spacer {
+  aspect-ratio: 680/150;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+    
+.layer1 {
+  background-image: url('./images/aboutLayerTop.svg');
+} 
+    
+.layer2 {
+  background-image: url('./images/aboutLayerbottom.svg');
+}   
+
+.editable.highlight {
+  background-color:rgb(237, 236, 159);
+  border-radius: 50px;
+  width:max-content;
+}
 </style>
+
+
+<script>
+// Add an event listener to the edit button that will toggle the edit mode on and off.
+
+const editButton = document.querySelector('.btn1');
+const nameField = document.querySelector('#name');
+const iddField = document.querySelector('#idd');
+const idd1Field = document.querySelector('#idd1');
+const imageButton = document.querySelector('#imageButton');
+let isEditMode = false;
+
+// Retrieve the saved data from local storage when the page loads
+window.addEventListener('load', () => {
+  const savedData = JSON.parse(localStorage.getItem('profileData')) || {};
+  nameField.textContent = savedData.name || nameField.textContent;
+  iddField.textContent = savedData.idd || iddField.textContent;
+  idd1Field.textContent = savedData.idd1 || idd1Field.textContent;
+  currentAvatar = savedData.avatar || currentAvatar;
+  imageButton.querySelector('img').src = currentAvatar;
+});
+
+editButton.addEventListener('click', () => {
+  isEditMode = !isEditMode;
+  if (isEditMode) {
+    editButton.textContent = 'Save Changes';
+    nameField.contentEditable = 'true';
+    iddField.contentEditable = 'true';
+    idd1Field.contentEditable = 'true';
+
+    // Highlight the editable elements
+    const editableElements = document.querySelectorAll('.editable');
+    editableElements.forEach((element) => {
+      element.classList.add('highlight');
+    });
+  } else {
+    editButton.textContent = 'Edit Profile';
+    nameField.contentEditable = 'false';
+    iddField.contentEditable = 'false';
+    idd1Field.contentEditable = 'false';
+
+    // Remove the highlight from the editable elements
+    const editableElements = document.querySelectorAll('.editable');
+    editableElements.forEach((element) => {
+      element.classList.remove('highlight');
+    });
+
+    // Save the updated data to local storage
+    const profileData = {
+      name: nameField.textContent,
+      idd: iddField.textContent,
+      idd1: idd1Field.textContent,
+      avatar: currentAvatar,
+    };
+    localStorage.setItem('profileData', JSON.stringify(profileData));
+  }
+});
+
+
+// Add an event listener to the image button that will switch the image source between male and female avatars.
+const maleAvatar = './images/male.png';
+const femaleAvatar = './images/female.png';
+let currentAvatar = maleAvatar;
+
+imageButton.addEventListener('click', () => {
+  if (isEditMode) {
+    currentAvatar = currentAvatar === maleAvatar ? femaleAvatar : maleAvatar;
+    imageButton.querySelector('img').src = currentAvatar;
+  }
+});
+
+  </script>
+
