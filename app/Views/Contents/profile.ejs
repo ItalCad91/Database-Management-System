@@ -32,13 +32,14 @@
 </body>
 
 <style>
-    * {
+* 
+{
     margin: 0;
     padding: 0
 }
 
-
-.card {
+.card 
+{
     width: 350px;
     background-color: #efefef;
     border: none;
@@ -46,46 +47,55 @@
     transition: all 0.5s;
 }
 
-.image img {
+.image img 
+{
     transition: all 0.5s
 }
 
-.card:hover .image img {
+.card:hover .image img 
+{
     transform: scale(1.5)
 }
 
-.btn {
+.btn 
+{
     height: 140px;
     width: 140px;
     border-radius: 50%
 }
 
-.name {
+.name 
+{
     font-size: 22px;
     font-weight: bold
 }
 
-.idd {
+.idd 
+{
     font-size: 14px;
     font-weight: 600
 }
 
-.idd1 {
+.idd1 
+{
     font-size: 12px
 }
 
-.number {
+.number 
+{
     font-size: 22px;
     font-weight: bold
 }
 
-.follow {
+.follow 
+{
     font-size: 12px;
     font-weight: 500;
     color: #444444
 }
 
-.btn1 {
+.btn1 
+{
     height: 40px;
     width: 150px;
     border: none;
@@ -94,31 +104,37 @@
     font-size: 15px
 }
 
-.text span {
+.text span 
+{
     font-size: 13px;
     color: #545454;
     font-weight: 500
 }
 
-.icons i {
+.icons i 
+{
     font-size: 19px
 }
 
-hr .new1 {
+hr .new1 
+{
     border: 1px solid
 }
 
-.join {
+.join 
+{
     font-size: 14px;
     color: #a0a0a0;
     font-weight: bold
 }
 
-.date {
+.date 
+{
     background-color: #ccc
 }
 
-.spacer {
+.spacer 
+{
   aspect-ratio: 680/150;
   width: 100%;
   background-repeat: no-repeat;
@@ -126,15 +142,18 @@ hr .new1 {
   background-size: cover;
 }
     
-.layer1 {
+.layer1 
+{
   background-image: url('./images/aboutLayerTop.svg');
 } 
     
-.layer2 {
+.layer2 
+{
   background-image: url('./images/aboutLayerbottom.svg');
 }   
 
-.editable.highlight {
+.editable.highlight 
+{
   background-color:rgb(237, 236, 159);
   border-radius: 50px;
   width:max-content;
@@ -143,8 +162,8 @@ hr .new1 {
 
 
 <script>
-// Add an event listener to the edit button that will toggle the edit mode on and off.
 
+// Add an event listener to the edit button that will toggle the edit mode on and off.
 const editButton = document.querySelector('.btn1');
 const nameField = document.querySelector('#name');
 const iddField = document.querySelector('#idd');
@@ -210,6 +229,5 @@ imageButton.addEventListener('click', () => {
     imageButton.querySelector('img').src = currentAvatar;
   }
 });
-
-  </script>
+</script>
 

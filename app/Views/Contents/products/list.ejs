@@ -16,55 +16,40 @@ Date: 15-02-2023 -->
     <div class="container fontHome">
         <h1 class="center">Personal Database</h1>
 
-        <!-- SEARCH BAR -->
+<!-- SEARCH BAR -->
         <form method="GET" action="#">        
             <input style="border-radius: 20px;" type="text" name="query" id="searchInput" placeholder="Search...">
             <button style="border-radius: 20px; background-color: 00A491; color: aliceblue;" type="submit">Search</button>
             <button style="border-radius: 20px; background-color: 00A491; color: aliceblue;" id="print-btn">Print Search Results</button>            
             <button style="border-radius: 20px; background-color: 00A491; color: aliceblue;" id="clear-btn">Clear</button>            
         </form>
-
         <h1>Search Results:</h1>
         <table id="searchResults"></div> <!-- div to display search results -->
-
         <hr style="color: black;">
+
+<!-- END OF SEARCH BAR -->
+
 
 <!-- TABLE SECTION --> 
 
 <table class="round table table-striped table-bordered table-hover"> 
 
   <thead class="table-dark"> 
-
       <tr> 
-
           <th scope="col" class="text-center">#</th> 
-
           <th scope="col">Name</th> 
-
           <th scope="col">ID</th> 
-
           <th scope="col">Available Quantity</th> 
-
           <th scope="col">Price</th> 
-
           <th scope="col">Quantity Sold</th> 
-
           <th></th> 
-
           <th></th> 
-
       </tr> 
-
   </thead> 
-
   <tbody id="contactList"> 
-
       <!-- Repeatable Rows --> 
-
       <% for(let count = 0; count < products.length; count++) { %> 
-
           <tr> 
-
               <th style="color:rgb(135, 72, 16)" scope="row" class="text-center listColor"><%= count + 1 %></th> 
 
               <td style="color:rgb(135, 72, 16)"><%= products[count].productName %></td> 
@@ -75,70 +60,40 @@ Date: 15-02-2023 -->
 
               <td style="color:rgb(135, 72, 16)"><%= products[count].price %></td> 
 
-              <td style="color:rgb(135, 72, 16)"><%= products[count].quantitySold %></td> 
+              <td style="color:rgb(135, 72, 16)"><%= products[count].quantitySold %></td>                
 
-               
-
-              <td class="text-center col-1"> 
-
-                  <a href="/products-edit/<%= products[count]._id %>" style=" border-radius: 20px; background-color: 00A491; color: aliceblue;" 
-
-                      class="btn btn-sm"> 
-
-                      <i class="fas fa-pencil-alt"></i> Edit</a> 
-
-              </td> 
-
-               
-
-              <td class="text-center col-1"> 
-
-                  <a href="/products-delete/<%= products[count]._id %>" style=" border-radius: 20px; background-color: 00A491; color: aliceblue;" 
-
-                      class="btn btn-sm"> 
-
-                      <i class="fas fa-trash-alt"></i> Delete</a> 
-
-              </td> 
-
+            <td class="text-center col-1">
+            <a href="/products-edit/<%= products[count]._id %>" style=" border-radius: 20px; background-color: 00A491; color: aliceblue;" class="btn btn-sm">
+            <i class="fas fa-pencil-alt"></i> Edit</a>
+           </td> 
+           <td class="text-center col-1"> 
+            <a href="/products-delete/<%= products[count]._id %>" style=" border-radius: 20px; background-color: 00A491; color: aliceblue;" class="btn btn-sm"> 
+            <i class="fas fa-trash-alt"></i> Delete</a> 
+          </td> 
           </tr> 
-
-      <% } %> 
-
-  </tbody> 
-
+       <% } %> 
+    </tbody> 
 </table> <!-- Add this closing tag -->
-
 <br> 
-
 <a href="/products-add" style="background-color: 00A491; color: aliceblue; border-radius: 20px;" class="btn" role="button"> 
-
   Add an Item</a> 
-
 <div class="row"> 
-
- <div class="col"> 
-
+ <div class="col">
      <br> 
-
  </div> 
-
+</div> 
 </div> 
 
-</div> 
-
+<!-- TO THE TOP BUTTON -->
 <section class="text-center">
     <a href="#top1" class="w3-button text-center w3-black"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   </section>           
     <div class="layer2 spacer"></div>   
-
 </body> 
 
-<script src="./Scripts/scripts.js"></script> 
-
-
 <style>
-.spacer {
+.spacer 
+{
   aspect-ratio: 680/150;
   width: 100%;
   background-repeat: no-repeat;
@@ -146,12 +101,15 @@ Date: 15-02-2023 -->
   background-size: cover;
 }
         
-.layer1 {
+.layer1 
+{
   background-image: url('./images/aboutLayerTop.svg');
 } 
         
-.layer2 {
+.layer2 
+{
   background-image: url('./images/aboutLayerbottom.svg');
 }   
-    
 </style>
+
+<script src="./Scripts/scripts.js"></script> 
